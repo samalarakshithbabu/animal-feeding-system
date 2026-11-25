@@ -1,18 +1,23 @@
-# 🐾 Animal Feeding System v2.0
+# Animal Feeding System v2.0
 
 A comprehensive smart web application for animal feeding operations with SQL logging, Python analytics, waste tracking, anomaly detection, and stock forecasting.
 
-## 🌟 What's New (v2.0 vs Original)
+---
 
-### Original Limitations
-- Only covered scheduling functionality
-- No feeding data logging or storage
-- No consumption analysis
-- No waste tracking or cost tracking
-- No anomaly detection or alerts
-- No stock forecasting
+## Problem Statement
 
-### v2.0 Improvements
+Animal feeding operations lack digital tracking for consumption, waste, costs, and inventory forecasting. Manual logging leads to data loss, no trend analysis, and reactive (not proactive) inventory management.
+
+## Objectives
+
+- Replace paper-based feeding logs with digital SQL-backed system
+- Track consumption per animal, per food type with waste quantification
+- Implement automated anomaly detection for missed feedings, reduced consumption, waste spikes
+- Provide AI-powered 14-day stock forecasting with reorder recommendations
+- Enable cost analytics and reporting for operational decisions
+
+## Key Features (v2.0 vs Original)
+
 | Feature | Original | v2.0 |
 |---------|----------|------|
 | Feeding Logging | ❌ | ✅ SQL-based with full history |
@@ -23,9 +28,7 @@ A comprehensive smart web application for animal feeding operations with SQL log
 | Stock Forecasting | ❌ | ✅ 14-day prediction with AI |
 | Data Visualization | ❌ | ✅ Charts and trends |
 
----
-
-## 🛠️ Tech Stack
+## Technology Stack
 
 ### Frontend
 - **React 18.x** + **TypeScript 5.x** - Component-based UI
@@ -45,12 +48,10 @@ A comprehensive smart web application for animal feeding operations with SQL log
 - Linear regression for forecasting
 - Seasonal consumption patterns
 
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
-Animal-Feeding-System/
+animal-feeding-system/
 ├── src/
 │   ├── components/
 │   │   └── Navbar.tsx         # Navigation component
@@ -83,43 +84,7 @@ Animal-Feeding-System/
 └── tsconfig.json
 ```
 
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18.x or higher
-- Python 3.8+ (for analytics)
-
-### Installation
-
-```bash
-# Clone the repository
-cd Animal-Feeding-System
-
-# Install Node dependencies
-npm install
-
-# Start both backend and frontend
-npm run dev:all
-```
-
-Or run separately:
-```bash
-# Terminal 1: Backend (port 3001)
-npm run server
-
-# Terminal 2: Frontend (port 5173)
-npm run dev
-```
-
-Visit:
-- **Frontend**: http://localhost:5173
-- **API**: http://localhost:3001/api
-
----
-
-## 📊 Core Features
+## Core Features
 
 ### 1. Feeding Logging (The Core)
 Log every feeding with:
@@ -130,8 +95,8 @@ Log every feeding with:
 - Status: completed/partial/missed/skipped
 - Staff notes
 
-```typescript
-// API Example
+```bash
+# API Example
 POST /api/feeding-logs
 {
   "animal_id": 1,
@@ -145,12 +110,10 @@ POST /api/feeding-logs
 ```
 
 ### 2. Waste & Cost Tracking
-Track every gram of food:
 - **Waste** → Recorded and cost calculated
 - **Consumption** → Deducted from inventory
 - **Transactions** → Full audit trail
-
-Cost per food type tracked automatically with real-time calculations.
+- Cost per food type tracked automatically with real-time calculations
 
 ### 3. Anomaly Detection (Python + SQL)
 Automated alerts for:
@@ -160,8 +123,8 @@ Automated alerts for:
 - **Low Stock** - Below minimum threshold
 - **Expiration Warnings** - Items expiring soon
 
-```python
-# Example: Anomaly Detection
+```bash
+# Generate anomaly alerts
 python backend/analytics.py anomalies medium
 # Returns sorted alerts by severity
 ```
@@ -173,14 +136,12 @@ Python analytics predict:
 - Estimated reorder cost
 - Seasonal trend adjustments
 
-```python
+```bash
 # Generate 14-day forecast
 python backend/analytics.py forecast 14
 ```
 
----
-
-## 📈 Database Schema (SQLite)
+## Database Schema (SQLite)
 
 ### Core Tables
 - `animals` - Animal profiles with species, weight, status
@@ -202,9 +163,7 @@ food_types 1───N food_stock
 food_types 1───N food_transactions
 ```
 
----
-
-## 🎨 Pages Overview
+## Pages Overview
 
 | Page | Description |
 |------|-------------|
@@ -217,9 +176,7 @@ food_types 1───N food_transactions
 | **Alerts** | View and acknowledge anomaly alerts |
 | **Reports** | Cost analysis, consumption by animal/food |
 
----
-
-## 🔧 API Endpoints
+## API Endpoints
 
 ### Animals
 - `GET /api/animals` - List all
@@ -247,9 +204,7 @@ food_types 1───N food_transactions
 - `PUT /api/alerts/:id/acknowledge` - Acknowledge
 - `POST /api/alerts/generate` - Run detection
 
----
-
-## 📊 Python Analytics Commands
+## Python Analytics Commands
 
 ```bash
 # View consumption patterns
@@ -268,9 +223,7 @@ python backend/analytics.py cost 2025-01-01 2025-01-31
 python backend/analytics.py full
 ```
 
----
-
-## 🎯 Key Metrics Tracked
+## Key Metrics Tracked
 
 | Metric | Description |
 |--------|-------------|
@@ -280,10 +233,38 @@ python backend/analytics.py full
 | Stock Days | Days until stockout |
 | Anomaly Rate | Alerts per 100 feedings |
 
----
+## Quick Start
 
-## 🔒 Data Safety
+### Prerequisites
+- Node.js 18.x or higher
+- Python 3.8+ (for analytics)
 
+### Installation
+```bash
+# Clone the repository
+cd animal-feeding-system
+
+# Install Node dependencies
+npm install
+
+# Start both backend and frontend
+npm run dev:all
+```
+
+Or run separately:
+```bash
+# Terminal 1: Backend (port 3001)
+npm run server
+
+# Terminal 2: Frontend (port 5173)
+npm run dev
+```
+
+Visit:
+- **Frontend**: http://localhost:5173
+- **API**: http://localhost:3001/api
+
+## Data Safety
 - Local SQLite database (no cloud sync)
 - All data stored in `./data/feeding.db`
 - Backup by copying the database file
@@ -291,16 +272,17 @@ python backend/analytics.py full
 
 ---
 
-## 📄 License
+## Author
 
-MIT License
+**SAMALA RAKSHITH BABU**  
+
+**Contact:**  
+- Email: samalarakshithbabu7@gmail.com  
+- LinkedIn: https://www.linkedin.com/in/samala-rakshith-babu/  
+- GitHub: https://github.com/samalarakshithbabu  
 
 ---
 
-## 👨‍💻 Built With
+## License
 
-- React + TypeScript + Vite
-- Express + SQLite
-- Python (analytics)
-- Tailwind CSS
-- Recharts
+MIT License
