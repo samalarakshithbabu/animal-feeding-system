@@ -1,5 +1,18 @@
 # Animal Feeding System v2.0
 
+<div align="center">
+
+![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=flat-square&logo=vite)
+![Express](https://img.shields.io/badge/Express-4.x-000000?style=flat-square&logo=express)
+![SQLite](https://img.shields.io/badge/SQLite-Better--SQLite3-003B57?style=flat-square&logo=sqlite)
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.x-38B2AC?style=flat-square&logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
+
+</div>
+
 A comprehensive smart web application for animal feeding operations with SQL logging, Python analytics, waste tracking, anomaly detection, and stock forecasting.
 
 ---
@@ -27,6 +40,34 @@ Animal feeding operations lack digital tracking for consumption, waste, costs, a
 | Anomaly Alerts | ❌ | ✅ Missed/reduced/waste alerts |
 | Stock Forecasting | ❌ | ✅ 14-day prediction with AI |
 | Data Visualization | ❌ | ✅ Charts and trends |
+
+## System Architecture
+
+```mermaid
+graph TB
+    subgraph Frontend [React TypeScript Frontend]
+        UI[React Components]
+        Router[React Router]
+        Charts[Recharts Visualizations]
+    end
+
+    subgraph Backend [Express Backend - Port 3001]
+        API[REST API Endpoints]
+        DB[(SQLite Database)]
+    end
+
+    subgraph Analytics [Python Analytics]
+        Anomaly[Anomaly Detection]
+        Forecast[Stock Forecasting]
+    end
+
+    UI -->|HTTP Requests| Router
+    Router --> API
+    API --> DB
+    API -.->|python scripts| Analytics
+    Anomaly -.->|alerts| API
+    Forecast -.->|predictions| API
+```
 
 ## Technology Stack
 
